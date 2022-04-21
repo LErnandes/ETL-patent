@@ -10,6 +10,7 @@ for char in ['[', ']', '/', '{', '}', ';', ':', '(', ')', '...']:
 
 
 # 3. Converter numeros float para int em colunas de numeros inteiros
-
+int_columns = ['class', 'group', 'main_group']
+df = df.fillna({column: 0 for column in int_columns}).astype({column: 'int32' for column in int_columns})
 
 print(df)
