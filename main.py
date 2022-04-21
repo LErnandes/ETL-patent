@@ -1,4 +1,8 @@
 import pandas as pd
+import sqlite3
+
+# Conectando ao banco Sqlite
+conn = sqlite3.connect('patent.db')
 
 
 # 1. Remover 0 da frente de numeros
@@ -13,4 +17,4 @@ for char in ['[', ']', '/', '{', '}', ';', ':', '(', ')', '...']:
 int_columns = ['class', 'group', 'main_group']
 df = df.fillna({column: 0 for column in int_columns}).astype({column: 'int32' for column in int_columns})
 
-print(df)
+df.to_sql('patents', con=conn)
